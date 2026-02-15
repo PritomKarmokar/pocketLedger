@@ -41,7 +41,7 @@ THIRD_PARTY_APPS = [
 
 # Add IN House Project Apps here
 PROJECT_APPS = [
-
+    'accounts',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -94,6 +94,8 @@ DATABASES = {
         'OPTIONS': env.dict('DB_OPTIONS'),
     },
 }
+
+AUTH_USER_MODEL = 'accounts.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
