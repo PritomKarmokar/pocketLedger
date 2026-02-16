@@ -11,12 +11,18 @@ VALID_DATA_NOT_FOUND = {
 }
 
 USER_CREATION_FAILED = {
-    "code": "UCF400",
+    "code": "UCF_400",
     "lang": "en",
     "message": "User creation failed.",
 }
 
+INVALID_PASSWORD_PATTERNS = {
+    "code": "INVP_400",
+    "lang": "en",
+    "message": "Invalid Password Patterns",
+}
 
 VALIDATION_ERROR_DICT = {
     "UAE_400": USER_ALREADY_EXISTS,
+    "INVP_400": INVALID_PASSWORD_PATTERNS,
 }
