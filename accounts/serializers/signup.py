@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
-from django.core.exceptions import ValidationError as DjangoValidationError
+from django.core.exceptions import ValidationError
 
 from accounts.models import User
 
 class SignUpSerializer(serializers.Serializer):
-    username = serializers.CharField()
+    username = serializers.CharField(min_length=3, max_length=55)
     email = serializers.EmailField()
-    password = serializers.CharField(min_length=8, max_length=128, write_only=True)
+    password = serializers.CharField(write_only=True)
 
     def validate_email(self, value):
         if User.objects.email_exists(value):
@@ -20,8 +20,8 @@ class SignUpSerializer(serializers.Serializer):
     def validate_password(self, value):
         try:
             validate_password(value)
-        except DjangoValidationError as e:
-            errors = e.messages
+        except ValidationError as err:
+            errors = ''.join(err.messages)
             raise serializers.ValidationError(
                 detail=errors,
                 code="INVP_400"
