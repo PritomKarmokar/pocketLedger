@@ -8,6 +8,7 @@ def format_output_success(response: dict, data: dict) -> dict:
     return response
 
 def format_output_error(response: dict, error: str) -> dict:
+    response["data"] = {}
     if error:
         response["error"] = error
     return response

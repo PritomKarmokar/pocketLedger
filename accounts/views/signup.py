@@ -4,8 +4,8 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 
 from applibs.logger import get_logger
-from applibs.response import render_serializer_errors
-from applibs.status import USER_SIGNUP_SUCCESS, USER_CREATION_FAILED
+from applibs.response import format_output_error
+from applibs.status import USER_SIGNUP_SUCCESS, USER_CREATION_FAILED, VALID_DATA_NOT_FOUND
 
 from accounts.models import User
 from accounts.serializers import SignUpSerializer
@@ -24,7 +24,7 @@ class SignUpAPIView(APIView):
             errors = serializer.errors
             logger.error("SignUp Serializer Errors: %s", errors)
             return Response(
-                render_serializer_errors(errors), status=status.HTTP_400_BAD_REQUEST
+                format_output_error(VALID_DATA_NOT_FOUND, error=errors), status=status.HTTP_400_BAD_REQUEST
             )
 
         serializer_data = serializer.validated_data
