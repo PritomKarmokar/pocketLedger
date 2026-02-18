@@ -22,6 +22,12 @@ INVALID_PASSWORD_PATTERNS = {
     "message": "Invalid Password Patterns",
 }
 
+INVALID_CREDENTIALS = {
+    "code": "INVC_400",
+    "lang": "en",
+    "message": "Invalid Login Credentials.",
+}
+
 VALIDATION_ERROR_DICT = {
     "UAE_400": USER_ALREADY_EXISTS,
     "INVP_400": INVALID_PASSWORD_PATTERNS,
